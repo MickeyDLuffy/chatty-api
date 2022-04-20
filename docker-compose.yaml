@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+#  chat_api:
+
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    container_name: postgres_db
+    volumes:
+      - C:\services\docker\volumes\chatApi:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=chat
+      - POSTGRES_USER=dluffy
+      - POSTGRES_PASSWORD=nico_robin
+
+
+  keycloak:
+    image: jboss/keycloak
+    container_name: kc
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_DATABASE=chat
+      - DB_USER=dluffy
+      - DB_PASSWORD=nico_robin
+      - DB_ADDR=postgres
+      - KEYCLOAK_USER=judith
+      - KEYCLOAK_PASSWORD=judith
+      - KEYCLOAK_ADMIN=dluffy
+      - KEYCLOAK_ADMIN_PASSWORD=nico
+    depends_on:
+      - postgres
+

@@ -1,2 +1,23 @@
 server:
   port: 9090
+
+spring:
+  datasource:
+    username: dluffy
+    password: nico_robin
+    url: "jdbc:postgresql://localhost:5432/chat"
+  jpa:
+    show-sql: true
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${constants.kc.issuer_uri}
+          jwk-set-uri: ${constants.kc.issuer_uri}/protocol/openid-connect/certs
+
+constants:
+  kc:
+    base_uri: http://localhost:8080/auth
+    realm: chatty
+    issuer_uri: ${constants.kc.base_uri}/realms/${constants.kc.realm}
