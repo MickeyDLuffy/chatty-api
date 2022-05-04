@@ -1,6 +1,5 @@
 server:
   port: 9090
-
 spring:
   datasource:
     username: dluffy
@@ -15,9 +14,16 @@ spring:
         jwt:
           issuer-uri: ${constants.kc.issuer_uri}
           jwk-set-uri: ${constants.kc.issuer_uri}/protocol/openid-connect/certs
+  flyway:
+    baseline-on-migrate: true
 
 constants:
   kc:
     base_uri: http://localhost:8080/auth
     realm: chatty
     issuer_uri: ${constants.kc.base_uri}/realms/${constants.kc.realm}
+management:
+  endpoints:
+    jmx:
+      exposure:
+        include: '*'

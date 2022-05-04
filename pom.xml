@@ -37,6 +37,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
@@ -75,6 +80,7 @@
     </dependencies>
 
     <build>
+        <finalName>chatty-api</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -87,6 +93,7 @@
                         </exclude>
                     </excludes>
                 </configuration>
+
             </plugin>
         </plugins>
     </build>
